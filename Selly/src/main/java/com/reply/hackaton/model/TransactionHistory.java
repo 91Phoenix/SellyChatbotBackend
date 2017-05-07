@@ -17,7 +17,7 @@ public class TransactionHistory {
 	public TransactionHistory(String pAN, double amount, boolean e_comm, String merchant_ID, String merchant_name,
 			String city, String postaCode, boolean domestic, boolean c_less, String transaction_ID, int prod_cat) {
 		super();
-		PAN = pAN;
+		this.PAN = pAN;
 		this.amount = amount;
 		this.e_comm = e_comm;
 		this.merchant_ID = merchant_ID;
@@ -35,7 +35,7 @@ public class TransactionHistory {
 	}
 
 	public void setPAN(String pAN) {
-		PAN = pAN;
+		this.PAN = pAN;
 	}
 
 	public double getAmount() {
@@ -118,4 +118,13 @@ public class TransactionHistory {
 		this.prod_cat = prod_cat;
 	}
 
+	@Override
+	public String toString() {
+		return "TransactionHistory [PAN=" + PAN + ", amount=" + amount + ", e_comm=" + e_comm + ", merchant_ID="
+				+ merchant_ID + ", merchant_name=" + merchant_name + ", city=" + city + ", postaCode=" + postaCode
+				+ ", domestic=" + domestic + ", c_less=" + c_less + ", transaction_ID=" + transaction_ID + ", prod_cat="
+				+ prod_cat + "]";
+	}
+	
+	
 }

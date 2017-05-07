@@ -45,6 +45,14 @@
 			<artifactId>guava</artifactId>
 			<version>21.0</version>
 		</dependency>
+
+		<!-- csv reader -->
+		<dependency>
+			<groupId>com.opencsv</groupId>
+			<artifactId>opencsv</artifactId>
+			<version>3.8</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

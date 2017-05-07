@@ -26,7 +26,7 @@ Giorgio De Donno/Giulia Grosso (Triplesense)
 
 # HOW TO
 
-to start the project:
+to start the project:<br />
 -clone the repository;<br />
 -import the project into your workspace<br />
 -download in csv format che sheet Transaction Hystory and Users from the SELLY CONCEPT Excell file<br />

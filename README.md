@@ -23,3 +23,11 @@ Marios Alitska (Sytel)
 Marco Argenti (IrisCube) 
 Raffaele Rotella (Open)
 Giorgio De Donno/Giulia Grosso (Triplesense) 
+
+# HOW TO
+
+to start the project:
+-clone the repository;
+-import the project into your workspace
+-download in csv format che sheet Transaction Hystory and Users from the SELLY CONCEPT Excell file
+-put them within the Selly\src\main\resources folder

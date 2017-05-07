@@ -32,8 +32,8 @@ public class modelMockUpConfiguration {
 	
 	public static final Logger logger = Logger.getLogger(modelMockUpConfiguration.class);
 
-	public modelMockUpConfiguration() throws IllegalAccessException, IllegalArgumentException,
-					InvocationTargetException, IOException, NoSuchMethodException, SecurityException {
+	public modelMockUpConfiguration() throws IllegalAccessException,
+			InvocationTargetException, IOException, NoSuchMethodException {
 		
 		setUsers(new ArrayList<User>());
 		setTransactions(new ArrayList<TransactionHistory>());
@@ -64,7 +64,7 @@ public class modelMockUpConfiguration {
 	}
 
 	private void populateMock(String file, Method m)
-			throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException {
+			throws IllegalAccessException, InvocationTargetException, IOException {
 
 		CSVReader reader = new CSVReader(new FileReader(new ClassPathResource(file).getFile()));
 		// jump directly to the second line to collect the data

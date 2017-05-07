@@ -31,3 +31,5 @@ to start the project:<br />
 -import the project into your workspace<br />
 -download in csv format che sheet Transaction Hystory and Users from the SELLY CONCEPT Excell file<br />
 -put them within the Selly\src\main\resources folder<br />
+-Modify the ClientRequestManagerService.java class, PARAMETER --> private static final String authorization = "Bearer <bold>FIXME"</bold>
+inserting the Selly project (ftom Api.ai) authorization token.

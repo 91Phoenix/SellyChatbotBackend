@@ -27,7 +27,7 @@ Giorgio De Donno/Giulia Grosso (Triplesense)
 # HOW TO
 
 to start the project:
--clone the repository;
--import the project into your workspace
--download in csv format che sheet Transaction Hystory and Users from the SELLY CONCEPT Excell file
--put them within the Selly\src\main\resources folder
+-clone the repository;<br />
+-import the project into your workspace<br />
+-download in csv format che sheet Transaction Hystory and Users from the SELLY CONCEPT Excell file<br />
+-put them within the Selly\src\main\resources folder<br />

@@ -9,7 +9,7 @@ public class User {
 	private int affinity;
 	private String type;
 	private int product;
-	private char scheme;
+	private String scheme;
 	private int CAP;
 	private String area;
 	private int plafond;
@@ -22,17 +22,17 @@ public class User {
 	private boolean newsletter;
 	private PersonalInformation personalInformation;
 	
-	public User(String pAN, LocalDate expirationDate, int affinity, String type, int product, char scheme, int cAP,
+	public User(String PAN, LocalDate expirationDate, int affinity, String type, int product, String scheme, int CAP,
 			String area, int plafond, String fiscalCode, boolean sMS_alert, boolean push_alert, boolean threeDS,
 			boolean mysi_pay, boolean ioSi, boolean newsletter, PersonalInformation personalInformation) {
 		super();
-		this.PAN = pAN;
+		this.PAN = PAN;
 		this.expirationDate = expirationDate;
 		this.affinity = affinity;
 		this.type = type;
 		this.product = product;
 		this.scheme = scheme;
-		this.CAP = cAP;
+		this.CAP = CAP;
 		this.area = area;
 		this.plafond = plafond;
 		this.fiscalCode = fiscalCode;
@@ -85,11 +85,11 @@ public class User {
 		this.product = product;
 	}
 
-	public char getScheme() {
+	public String getScheme() {
 		return scheme;
 	}
 
-	public void setScheme(char scheme) {
+	public void setScheme(String scheme) {
 		this.scheme = scheme;
 	}
 
@@ -181,6 +181,13 @@ public class User {
 		this.personalInformation = personalInformation;
 	}
 	
+	@Override
+	public String toString() {
+		return "User [PAN=" + PAN + ", expirationDate=" + expirationDate + ", affinity=" + affinity + ", type=" + type
+				+ ", product=" + product + ", scheme=" + scheme + ", CAP=" + CAP + ", area=" + area + ", plafond="
+				+ plafond + ", fiscalCode=" + fiscalCode + ", SMS_alert=" + SMS_alert + ", push_alert=" + push_alert
+				+ ", threeDS=" + threeDS + ", mysi_pay=" + mysi_pay + ", ioSi=" + ioSi + ", newsletter=" + newsletter
+				+ ", personalInformation=" + personalInformation + "]";
+	}
 	
-
 }

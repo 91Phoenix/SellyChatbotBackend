@@ -18,5 +18,5 @@ public class SellyApplication {
 	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
-	
+
 }

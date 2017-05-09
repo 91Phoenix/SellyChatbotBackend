@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.reply.hackaton.model.AndroidClientResponse;
 
-@Component
+@Service
 public class ClientRequestManagerService {
 	
 	public static final Logger logger = Logger.getLogger(ClientRequestManagerService.class);

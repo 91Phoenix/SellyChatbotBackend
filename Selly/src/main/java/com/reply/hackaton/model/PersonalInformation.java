@@ -2,7 +2,17 @@ package com.reply.hackaton.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class PersonalInformation {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String email;
 	private LocalDate birth_date;
 	private String address;
@@ -11,6 +21,8 @@ public class PersonalInformation {
 	private Geneder gender;
 	private String name;
 	private String surname;
+	
+	public PersonalInformation(){}
 	
 	public PersonalInformation(String email, LocalDate birth_date, String address, String city, String telephon,
 			Geneder gender, String name, String surname) {

@@ -2,9 +2,16 @@ package com.reply.hackaton.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
 public class User {
 	
+	@Id
 	private String PAN;
+	
 	private LocalDate  expirationDate;
 	private int affinity;
 	private String type;
@@ -20,7 +27,11 @@ public class User {
 	private boolean mysi_pay;
 	private boolean ioSi;
 	private boolean newsletter;
+	
+	@OneToOne
 	private PersonalInformation personalInformation;
+	
+	public User(){}
 	
 	public User(String PAN, LocalDate expirationDate, int affinity, String type, int product, String scheme, int CAP,
 			String area, int plafond, String fiscalCode, boolean sMS_alert, boolean push_alert, boolean threeDS,

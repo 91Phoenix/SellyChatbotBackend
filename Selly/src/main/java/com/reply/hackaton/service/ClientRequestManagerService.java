@@ -20,7 +20,7 @@ public class ClientRequestManagerService {
 	private static final String API_URL= "https://api.api.ai/v1/query";
 	private static final String LANGUAGE = "it";
 	private static final String VERSION = "LANGUAGE";
-	private static final String authorization = "Bearer def5eba71ada4038921bc7eae00895cf";
+	private static final String authorization = "Bearer FIXME";
 	
 	@Autowired
 	RestTemplate restTemplate;

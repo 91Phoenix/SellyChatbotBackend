@@ -57,8 +57,8 @@ public class modelMockUpConfiguration {
 	}
 
 	private void populateMock(String file, Consumer<CSVReader> c) throws IOException {
-		CSVReader reader = new CSVReader(new FileReader("C:\\Users\\r.rotella\\git\\Selly\\Selly\\target\\raffa\\BOOT-INF\\classes\\"+file));
-		//CSVReader reader = new CSVReader(new FileReader(new ClassPathResource(file).getFile()));
+		//CSVReader reader = new CSVReader(new FileReader("C:\\Users\\r.rotella\\git\\Selly\\Selly\\target\\raffa\\BOOT-INF\\classes\\"+file));
+		CSVReader reader = new CSVReader(new FileReader(new ClassPathResource(file).getFile()));
 		// jump directly to the second line to collect the data
 		reader.readNext();
 		c.accept(reader);

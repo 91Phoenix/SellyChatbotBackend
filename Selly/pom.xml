@@ -74,6 +74,13 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-releasetrain -->
+		<!-- <dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-releasetrain</artifactId>
+			<version>Hopper-SR2</version>
+		</dependency> -->
 	</dependencies>
 
 	<build>
@@ -118,6 +125,21 @@
 			<id>org.jboss.repository.releases</id>
 			<name>JBoss Maven Release Repository</name>
 			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+		</repository> 
+		<repository>
+			<id>central.maven.org</id>
+			<name>Maven Central 1</name>
+			<url>http://central.maven.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>repo.maven.apache.org</id>
+			<name>Maven Central</name>
+			<url>https://repo.maven.apache.org/maven2/</url>
+		</repository>
+		<repository>
+			<id>mvnrepository.com</id>
+			<name>Maven Central 2</name>
+			<url>https://mvnrepository.com/</url>
 		</repository>
 	</repositories>
 

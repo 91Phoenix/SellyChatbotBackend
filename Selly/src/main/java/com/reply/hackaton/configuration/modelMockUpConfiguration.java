@@ -52,7 +52,7 @@ public class modelMockUpConfiguration {
 			this.userPopulation(reader, userRepository);
 		});
 		logger.info("list of users populated: ");
-		// userRepository.findAll().forEach(t->logger.info(t.toString()));
+		userRepository.findAll().forEach(t->logger.info(t.toString()));
 
 	}
 

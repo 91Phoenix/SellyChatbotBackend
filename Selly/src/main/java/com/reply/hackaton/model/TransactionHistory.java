@@ -1,6 +1,7 @@
 package com.reply.hackaton.model;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,13 +21,13 @@ public class TransactionHistory {
 	@Id
 	private String transaction_ID;
 	private LocalDate date;
+	private LocalTime time;
 	private int prod_cat;
-	private String readableCategory;
-	
+	private String readableCategory;	
 	public TransactionHistory(){}
 	
 	public TransactionHistory(String pAN, double amount, boolean e_comm, String merchant_ID, String merchant_name,
-			String city, String postaCode, boolean domestic, boolean c_less, String transaction_ID, LocalDate date,int prod_cat,String readableCategory) {
+			String city, String postaCode, boolean domestic, boolean c_less, String transaction_ID, LocalDate date,LocalTime time, int prod_cat,String readableCategory) {
 		super();
 		this.PAN = pAN;
 		this.amount = amount;
@@ -41,6 +42,7 @@ public class TransactionHistory {
 		this.prod_cat = prod_cat;
 		this.date=date;
 		this.readableCategory=readableCategory;
+		this.time=time;
 	}
 
 	public String getPAN() {
@@ -146,13 +148,21 @@ public class TransactionHistory {
 	public void setReadableCategory(String readableCategory) {
 		this.readableCategory = readableCategory;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "TransactionHistory [PAN=" + PAN + ", amount=" + amount + ", e_comm=" + e_comm + ", merchant_ID="
 				+ merchant_ID + ", merchant_name=" + merchant_name + ", city=" + city + ", postaCode=" + postaCode
 				+ ", domestic=" + domestic + ", c_less=" + c_less + ", transaction_ID=" + transaction_ID + ", date="
-				+ date + ", prod_cat=" + prod_cat + ", readableCategory=" + readableCategory + "]";
+				+ date + ", time=" + time + ", prod_cat=" + prod_cat + ", readableCategory=" + readableCategory + "]";
+	}
+
+	public LocalTime getTime() {
+		return time;
+	}
+
+	public void setTime(LocalTime time) {
+		this.time = time;
 	}
 
 	

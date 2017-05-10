@@ -27,7 +27,7 @@ public class ClientRequestManagerService {
 	private static final String LANGUAGE = "it";
 	private static final String VERSION = "LANGUAGE";
 	//FIXME
-	private static final String authorization = "Bearer def5eba71ada4038921bc7eae00895cf";
+	private static final String authorization = "Bearer FIXME";
 	
 	private static final Map<String, Runnable> FUNCTIONS = new HashMap<String, Runnable>();
 	

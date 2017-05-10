@@ -1,8 +1,5 @@
 package com.reply.hackaton.service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.json.JSONException;
@@ -16,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.reply.hackaton.model.AndroidClientResponse;
+import com.reply.hackaton.model.IntentExecutorFactory;
 import com.reply.hackaton.model.Response;
 
 @Service
@@ -26,39 +24,39 @@ public class ClientRequestManagerService {
 	private static final String API_URL= "https://api.api.ai/v1/query";
 	private static final String LANGUAGE = "it";
 	private static final String VERSION = "LANGUAGE";
-	//FIXME
-	private static final String authorization = "Bearer FIXME";
-	
-	private static final Map<String, Runnable> FUNCTIONS = new HashMap<String, Runnable>();
+	//
+	//FIXME 
+	private static final String authorization = "Bearer FIXME ";
 	
 	@Autowired
 	RestTemplate restTemplate;
 	
-	@Autowired
-	IntentImplementation intenImplementation;
+	private IntentExecutorFactory intentExecutorFactory;
 	
-	public ClientRequestManagerService(){
-		FUNCTIONS.put("TurnOffSMS", intenImplementation::turnOffSMS);
-		FUNCTIONS.put("TurnOnSMS", intenImplementation::turnOnSMS);
+	@Autowired
+	public ClientRequestManagerService(IntentExecutorFactory intentExecutorFactory){
+		this.intentExecutorFactory=intentExecutorFactory;
 	}
 
 	public AndroidClientResponse manage(String text) throws JSONException {
 		
 		AndroidClientResponse response= new AndroidClientResponse();
+		//prepares the Api.ai request
 		HttpEntity<String> entity = requestsPreparer(text);
-		String apiAIResponse = restTemplate.postForObject(API_URL, entity,String.class);
-		Gson gson = new Gson();
-		Response apiAiResponse = gson.fromJson(apiAIResponse, Response.class);
+		//invokes and Wraps the ApiAIResponse into a Java Object
+		Response apiAiResponse = jsonToApiAIResponseTransformer(entity);
 		String action = apiAiResponse.getResult().getAction();
 		String intentName = null != action ? action : StringUtils.EMPTY;
 		//Invokes the proper java function in order to implement the business logic
-		if(FUNCTIONS.containsKey(intentName))
-			FUNCTIONS.get(intentName).run();
-		else{
-			//managing possible bugs/error situation
-			response.setResponseText("Ops.. qualcosa è andata storta. Puoi riformulare la domanda?");
-		}
+		response.setResponseText(intentExecutorFactory.getIntentExecutor(intentName).execute(apiAiResponse));
 		return response;
+	}
+
+	private Response jsonToApiAIResponseTransformer(HttpEntity<String> entity) {
+		String apiAIResponse = restTemplate.postForObject(API_URL, entity,String.class);
+		Gson gson = new Gson();
+		Response apiAiResponse = gson.fromJson(apiAIResponse, Response.class);
+		return apiAiResponse;
 	}
 
 	private HttpEntity<String> requestsPreparer(String text) throws JSONException {

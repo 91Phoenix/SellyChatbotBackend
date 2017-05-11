@@ -52,7 +52,6 @@ public class modelMockUpConfiguration {
 	}
 
 	private void populateMock(String file, Consumer<CSVReader> c) throws IOException {
-		// CSVReader reader = new CSVReader(new
 		// FileReader("C:\\Users\\r.rotella\\git\\Selly\\Selly\\target\\raffa\\BOOT-INF\\classes\\"+file));
 		CSVReader reader = new CSVReader(new FileReader(new ClassPathResource(file).getFile()));
 		// jumps directly to the second line to collect the data
@@ -67,13 +66,10 @@ public class modelMockUpConfiguration {
 			while ((line = reader.readNext()) != null) {
 				LocalDate date = secondDateFormatting(line[10]);
 				StringTokenizer tkn = new StringTokenizer(line[11], ".");
-				TransactionHistory currentTransaction = new TransactionHistory(Double.valueOf(line[1].replace(",", ".")), Boolean.valueOf(line[2]),
+				TransactionHistory currentTransaction = new TransactionHistory(line[0],Double.valueOf(line[1].replace(",", ".")), Boolean.valueOf(line[2]),
 						line[3], line[4], line[5], line[6], Boolean.valueOf(line[7]), Boolean.valueOf(line[8]),
 						line[9], date, timeFormatter(tkn), Integer.valueOf(line[12]), line[13]);
 				transactionHistoryRepository.save(currentTransaction);
-				User relatedUser = userRepository.findOne(line[0]);
-				if(relatedUser != null)
-					relatedUser.getTransactions().add(currentTransaction);
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);

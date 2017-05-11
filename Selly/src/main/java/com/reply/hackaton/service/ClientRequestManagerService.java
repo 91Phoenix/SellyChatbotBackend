@@ -23,7 +23,7 @@ public class ClientRequestManagerService {
 	
 	private static final String API_URL= "https://api.api.ai/v1/query";
 	private static final String LANGUAGE = "it";
-	private static final String VERSION = "LANGUAGE";
+	private static final String VERSION = "20150910";
 	//
 	//FIXME 
 	private static final String authorization = "Bearer FIXME ";

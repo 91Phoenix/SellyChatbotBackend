@@ -9,6 +9,7 @@ import java.util.StringTokenizer;
 import java.util.function.Consumer;
 
 import javax.annotation.PostConstruct;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,18 +40,15 @@ public class modelMockUpConfiguration {
 	}
 
 	@PostConstruct
+	@Transactional
 	public void init() throws IOException {
-		populateMock(TRANSACTION_FILE, reader -> {
-			this.transactionHistoryPopulation(reader, transactionHistoryRepository);
-		});
+		
+		populateMock(USER_FILE, reader -> {this.userPopulation(reader, userRepository);});
+		populateMock(TRANSACTION_FILE, reader -> {this.transactionHistoryPopulation(reader, transactionHistoryRepository);});
 		logger.info("transaction history populated: ");
 		transactionHistoryRepository.findAll().forEach(t -> logger.info(t.toString()));
-		populateMock(USER_FILE, reader -> {
-			this.userPopulation(reader, userRepository);
-		});
 		logger.info("list of users populated: ");
 		userRepository.findAll().forEach(t -> logger.info(t.toString()));
-
 	}
 
 	private void populateMock(String file, Consumer<CSVReader> c) throws IOException {
@@ -69,10 +67,13 @@ public class modelMockUpConfiguration {
 			while ((line = reader.readNext()) != null) {
 				LocalDate date = secondDateFormatting(line[10]);
 				StringTokenizer tkn = new StringTokenizer(line[11], ".");
-				transactionHistoryRepository.save(new TransactionHistory(line[0],
-						Double.valueOf(line[1].replace(",", ".")), Boolean.valueOf(line[2]), line[3], line[4], line[5],
-						line[6], Boolean.valueOf(line[7]), Boolean.valueOf(line[8]), line[9], date, timeFormatter(tkn),
-						Integer.valueOf(line[12]), line[13]));
+				TransactionHistory currentTransaction = new TransactionHistory(Double.valueOf(line[1].replace(",", ".")), Boolean.valueOf(line[2]),
+						line[3], line[4], line[5], line[6], Boolean.valueOf(line[7]), Boolean.valueOf(line[8]),
+						line[9], date, timeFormatter(tkn), Integer.valueOf(line[12]), line[13]);
+				transactionHistoryRepository.save(currentTransaction);
+				User relatedUser = userRepository.findOne(line[0]);
+				if(relatedUser != null)
+					relatedUser.getTransactions().add(currentTransaction);
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -97,11 +98,12 @@ public class modelMockUpConfiguration {
 			while ((line = reader.readNext()) != null) {
 				LocalDate birth_date = dateFormatting(line[17]);
 				LocalDate expirationDate = dateFormatting(line[1]);
-				userRepository.save(new User(line[0], expirationDate, Integer.valueOf(line[2]), line[3],
+				User currentUser = new User(line[0], expirationDate, Integer.valueOf(line[2]), line[3],
 						Integer.valueOf(line[4]), line[5], Integer.valueOf(line[6]), line[7], Integer.valueOf(line[8]),
 						line[9], Boolean.valueOf(line[10]), Boolean.valueOf(line[11]), Boolean.valueOf(line[12]),
 						Boolean.valueOf(line[13]), Boolean.valueOf(line[14]), Boolean.valueOf(line[15]), line[16],
-						birth_date, line[18], line[19], line[20], Geneder.valueOf(line[21]), line[22], line[23]));
+						birth_date, line[18], line[19], line[20], Geneder.valueOf(line[21]), line[22], line[23]);
+				userRepository.save(currentUser);
 			}
 		} catch (IOException e) {
 			throw new RuntimeException(e);
@@ -109,8 +111,8 @@ public class modelMockUpConfiguration {
 	}
 
 	private LocalDate dateFormatting(String date) {
-		return LocalDate.of(Integer.valueOf(date.substring(5, 8)), getMonth(date.substring(2, 4)),
-				Integer.valueOf(date.substring(0, 1)));
+		return LocalDate.of(Integer.valueOf(date.substring(5, 9)), getMonth(date.substring(2, 5)),
+				Integer.valueOf(date.substring(0, 2)));
 	}
 
 	private Month getMonth(String date) {

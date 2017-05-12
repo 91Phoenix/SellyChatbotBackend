@@ -30,6 +30,7 @@ public class ClientRequestManagerService {
 	
 	@Autowired
 	RestTemplate restTemplate;
+
 	
 	private IntentExecutorFactory intentExecutorFactory;
 	

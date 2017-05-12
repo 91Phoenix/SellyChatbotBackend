@@ -5,6 +5,7 @@ public class Response {
 	private String id;
 	private String timestamp;
 	private String lang;
+	private boolean actionIncomplete;
 	private Result result;
 	private Status status;
 	private String sessionId;
@@ -44,6 +45,12 @@ public class Response {
 	}
 	public void setSessionId(String sessionId) {
 		this.sessionId = sessionId;
+	}
+	public boolean isActionIncomplete() {
+		return actionIncomplete;
+	}
+	public void setActionIncomplete(boolean actionIncomplete) {
+		this.actionIncomplete = actionIncomplete;
 	}
 
 }

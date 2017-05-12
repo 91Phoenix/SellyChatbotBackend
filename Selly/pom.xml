@@ -89,29 +89,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>unpack-license</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>unpack</goal>
-						</goals>
-						<configuration>
-							<artifactItems>
-								<artifactItem>
-									<groupId>com.reply.hackaton</groupId>
-									<artifactId>Sellychatbot</artifactId>
-									<version>0.0.1-SNAPSHOT</version>
-								</artifactItem>
-							</artifactItems>
-							<outputDirectory>C:\Users\r.rotella\git\Selly\Selly\target\raffa</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
 

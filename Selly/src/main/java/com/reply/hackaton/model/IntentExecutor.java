@@ -2,5 +2,5 @@ package com.reply.hackaton.model;
 
 public interface IntentExecutor {
 	
-	String execute(Response ApiAIResponse);
+	String execute(Response apiAIResponse);
 }

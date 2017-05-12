@@ -17,7 +17,7 @@ public class TurnOnSMS implements IntentExecutor {
 	private UserRepository userRepository;
 
 	@Override
-	public String execute(Response ApiAIResponse) {
+	public String execute(Response apiAIResponse) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service("forward")
 public class RespondeWithoutProcessing implements IntentExecutor {
     @Override
-    public String execute(Response ApiAIResponse) {
-        return ApiAIResponse.getResult().getSpeech();
+    public String execute(Response apiAIResponse) {
+        return apiAIResponse.getResult().getSpeech();
     }
 }

@@ -1,23 +1,17 @@
 package com.reply.hackaton.model;
 
-import java.util.HashMap;
+import java.util.Map;
 
-public class Context {
-	private String name;
-	private HashMap<String,String> parameters;
-	private int lifespan;
+public class PostContext {
 	
+	private String name;
+	private int lifespan;
+	private Map<String,String> parameters;
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public HashMap<String, String> getParameters() {
-		return parameters;
-	}
-	public void setParameters(HashMap<String, String> parameters) {
-		this.parameters = parameters;
 	}
 	public int getLifespan() {
 		return lifespan;
@@ -25,5 +19,12 @@ public class Context {
 	public void setLifespan(int lifespan) {
 		this.lifespan = lifespan;
 	}
+	public Map<String, String> getParameters() {
+		return parameters;
+	}
+	public void setParameters(Map<String, String> parameters) {
+		this.parameters = parameters;
+	}
+	
 
 }

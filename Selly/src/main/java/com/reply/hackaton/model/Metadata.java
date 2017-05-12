@@ -7,7 +7,7 @@ public class Metadata {
 	private String intentName;
 	private Context[] inputContexts;
 	private Context[] outputContexts;
-	private Context[] contexts;
+	private String[] contexts;
 	
 	
 	public String getIntentId() {
@@ -25,10 +25,10 @@ public class Metadata {
 	public void setOutputContexts(Context[] outputContexts) {
 		this.outputContexts = outputContexts;
 	}
-	public Context[] getContexts() {
+	public String[] getContexts() {
 		return contexts;
 	}
-	public void setContexts(Context[] contexts) {
+	public void setContexts(String[] contexts) {
 		this.contexts = contexts;
 	}
 	public void setIntentId(String intentId) {

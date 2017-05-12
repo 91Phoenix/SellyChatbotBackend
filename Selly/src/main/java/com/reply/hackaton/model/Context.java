@@ -5,6 +5,8 @@ import java.util.HashMap;
 public class Context {
 	private String name;
 	private HashMap<String,String> parameters;
+	private int lifespan;
+	
 	public String getName() {
 		return name;
 	}
@@ -23,6 +25,5 @@ public class Context {
 	public void setLifespan(int lifespan) {
 		this.lifespan = lifespan;
 	}
-	private int lifespan;
 
 }

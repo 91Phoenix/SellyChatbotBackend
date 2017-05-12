@@ -26,7 +26,7 @@ public class ClientRequestManagerService {
 	private static final String VERSION = "20150910";
 	//
 	//FIXME 
-	private static final String authorization = "Bearer FIXME ";
+	private static final String authorization = "Bearer fbacdb128cb24b17af0fb5ce34a69989";
 	
 	@Autowired
 	RestTemplate restTemplate;

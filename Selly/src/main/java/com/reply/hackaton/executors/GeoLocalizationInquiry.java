@@ -26,26 +26,26 @@ public class GeoLocalizationInquiry implements IntentExecutor {
 		Iterable<User> iterable = users.findAll();
 		User resultUser = null;
 		for (User u : iterable) {
-			if (u.getPAN() == "525500******9045"){
+			if (u.getPAN().equals("525500******9045")){
 				resultUser = u;
 				break;
 			}
 		}
 		assert(resultUser != null);
 		
-		if(resultUser.getGeoFencing() == "World"){
-			return "You can use your card worldwide.";
+		if(resultUser.getGeoFencing().equals("World")){
+			return "Puoi pagare con la tua carta in tutto il mondo.";
 		}
-		else if(resultUser.getGeoFencing() == "Europe"){
+		else if(resultUser.getGeoFencing().equals("Europe")){
 			if (ApiAIResponse.getResult().getParameters().get("ZoneN") == "World"){
-				return "Your card is not enabled for worldwide usage."; 
+				return "La tua carta non é abilitata ai pagamenti in tutto il mondo."; 
 			}
 			else {
-				return "You can only use your card in " + ApiAIResponse.getResult().getParameters().get("ZoneN");
+				return "Puoi pagare con la tua carta solo in " + (ApiAIResponse.getResult().getParameters().get("ZoneN").equals("Europe") ? "Europa" : "Italia" ) + ".";
 			}
 		}
 		else {
-			return "You can use your card in Italy.";
+			return "Puoi utilizzare la tua carta per pagare in Italia.";
 		}
 	}
 

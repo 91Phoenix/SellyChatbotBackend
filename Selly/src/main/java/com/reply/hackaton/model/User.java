@@ -19,7 +19,7 @@ public class User {
 	@Id
 	private String PAN;
 	private LocalDate expirationDate;
-	private String geoFencing;
+	
 	private int affinity;
 	private String type;
 	private int product;
@@ -37,20 +37,20 @@ public class User {
 	private String email;
 	private LocalDate birth_date;
 	private String address;
-
 	private String city;
 	private String telephon;
 	private Geneder gender;
 	private String name;
 	private String surname;
+	private String geoFencing;
 
 	public User() {
 	}
 
-	public User(String pAN, LocalDate expirationDate, String geoFencing, int affinity, String type, int product, String scheme, int cAP,
+	public User(String pAN, LocalDate expirationDate, int affinity, String type, int product, String scheme, int cAP,
 			String area, int plafond, String fiscalCode, boolean sMS_alert, boolean push_alert, boolean threeDS,
 			boolean mysi_pay, boolean ioSi, boolean newsletter, String email, LocalDate birth_date, String address,
-			String city, String telephon, Geneder gender, String surname, String name) {
+			String city, String telephon, Geneder gender, String surname, String name, String geoFencing) {
 		super();
 		PAN = pAN;
 		this.expirationDate = expirationDate;

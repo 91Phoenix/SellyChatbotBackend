@@ -98,7 +98,7 @@ public class modelMockUpConfiguration {
 						Integer.valueOf(line[4]), line[5], Integer.valueOf(line[6]), line[7], Integer.valueOf(line[8]),
 						line[9], Boolean.valueOf(line[10]), Boolean.valueOf(line[11]), Boolean.valueOf(line[12]),
 						Boolean.valueOf(line[13]), Boolean.valueOf(line[14]), Boolean.valueOf(line[15]), line[16],
-						birth_date, line[18], line[19], line[20], Geneder.valueOf(line[21]), line[22], line[23]);
+						birth_date, line[18], line[19], line[20], Geneder.valueOf(line[21]), line[22], line[23], line[24]);
 				userRepository.save(currentUser);
 			}
 		} catch (IOException e) {

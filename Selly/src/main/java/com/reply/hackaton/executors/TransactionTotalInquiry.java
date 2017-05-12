@@ -14,32 +14,10 @@ import java.util.Random;
 public class TransactionTotalInquiry implements IntentExecutor {
     @Override
     public String execute(Response apiAIResponse) {
-        return getCarParameter(apiAIResponse);
-    }
-
-    private String getCarParameter(Response apiAIResponse){
-        String cardEntity = apiAIResponse.getResult().getParameters().get(EntityEnum.CARD.getApiAiEntityName());
-        String periodEntity = apiAIResponse.getResult().getParameters().get(EntityEnum.PERIOD.getApiAiEntityName());
-
-        if (cardEntity == null){
-            return ResponseForMissingParameters.CARD;
-        } else if (periodEntity == null){
-            return ResponseForMissingParameters.PERIOD;
-        } else{
-            return "Hai speso " + getRandomCardBalance();
+        if (apiAIResponse.getResult().isActionIncomplete()){
+            return apiAIResponse.getResult().getSpeech();
         }
-    }
 
-    private int getRandomCardBalance(){
-        Random r = new Random();
-        int Low = 1000;
-        int High = 40000;
-        return r.nextInt(High-Low) + Low;
-    }
-
-    private static class ResponseForMissingParameters {
-        private static String CARD = "Per quale carta?";
-        private static String PERIOD = "Per quale periodo?";
-        private static String SUCCESS = "Per quale carta?";
+        return "Hai speso " + Utils.getRandomCardBalance() + " euro.";
     }
 }

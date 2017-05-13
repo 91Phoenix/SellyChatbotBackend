@@ -66,7 +66,7 @@ public class StatemenetInquiry implements IntentExecutor {
 
 		sb.append("L’ultimo estratto conto che ti è stato addebitato di " + new DecimalFormat("#.##").format(
 				totalExpense) + " € è relativo" + ""
-				+ " alle spese che hai sostenuto nel mese di " + month
+				+ " alle spese che hai sostenuto nel mese di aprile"
 				+ ". Fammi sapere se ti occorrono maggiori dettagli");
 
 		return sb.toString();

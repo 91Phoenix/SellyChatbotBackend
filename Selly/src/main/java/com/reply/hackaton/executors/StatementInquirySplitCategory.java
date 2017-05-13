@@ -69,6 +69,7 @@ public class StatementInquirySplitCategory implements IntentExecutor {
 		int count = 1;
 		StringTokenizer tkn=null; 
 		for (Entry<Double, String> entry : orderedMap.entrySet()) {
+			if(count==6) break;
 			tkn= new StringTokenizer(entry.getValue(),"#");
 			sb.append(count + ")  "+ entry.getKey() + " € da "+tkn.nextToken() +" a " +tkn.nextToken());
 			sb.append(System.getProperty("line.separator"));

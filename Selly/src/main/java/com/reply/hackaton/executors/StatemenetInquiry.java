@@ -1,5 +1,6 @@
 package com.reply.hackaton.executors;
 
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class StatemenetInquiry implements IntentExecutor {
 
 	private static final String CARD = "Card";
 	private static final String MONTH = "Month";
+	private static final String MONTH_NOW = "Month_now";
 
 	@Autowired
 	TransactionHistoryRepository transactions;
@@ -33,13 +35,20 @@ public class StatemenetInquiry implements IntentExecutor {
 			card = "525500******9045";
 		}
 		// allo stato atuale non filtriamo veramente per carta
-		String month = ApiAIResponse.getResult().getParameters().get(MONTH);
-		Month javaMonth = getMonth(month);
-
+		Month javaMonth = null;
+		String month=null;
+		if (!ApiAIResponse.getResult().getParameters().get(MONTH_NOW).equals("") &&  ApiAIResponse.getResult().getParameters().get(MONTH_NOW) != null) {
+			javaMonth = Month.of(LocalDate.now().getMonth().getValue()-1);
+			month= Utility.transformEnglishToItalianMonths(javaMonth.name());
+		}else{
+			 month = ApiAIResponse.getResult().getParameters().get(MONTH);
+			javaMonth = getMonth(month);
+		}
+		
 		Iterable<TransactionHistory> iterable = transactions.findAll();
 		List<TransactionHistory> resultTransaction = new ArrayList<TransactionHistory>();
 		for (TransactionHistory th : iterable) {
-			if (th.getDate().getMonth().equals(javaMonth))
+			if (th.getDate().getMonth().equals(javaMonth) && th.getDate().getYear()==2017)
 				resultTransaction.add(th);
 		}
 		StringBuilder sb = new StringBuilder();

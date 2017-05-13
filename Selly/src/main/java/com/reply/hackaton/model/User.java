@@ -8,18 +8,9 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-	public String getGeoFencing() {
-		return geoFencing;
-	}
-
-	public void setGeoFencing(String geoFencing) {
-		this.geoFencing = geoFencing;
-	}
-
 	@Id
 	private String PAN;
 	private LocalDate expirationDate;
-	
 	private int affinity;
 	private String type;
 	private int product;
@@ -145,6 +136,15 @@ public class User {
 
 	public int getPlafond() {
 		return plafond;
+	}
+	
+
+	public String getGeoFencing() {
+		return geoFencing;
+	}
+
+	public void setGeoFencing(String geoFencing) {
+		this.geoFencing = geoFencing;
 	}
 
 	public void setPlafond(int plafond) {

@@ -10,7 +10,7 @@ import com.reply.hackaton.repository.UserRepository;
 public class GeoLocalizationInquiry implements IntentExecutor {
 
 	private static final String TRAVEL_INSURANCE = "travel_insurance";
-	private static final String TRAVEL_INSURANCE_WEB_SITE = "https://www.travelexinsurance.com";
+	private static final String TRAVEL_INSURANCE_WEB_SITE = "http://tiny.cc/dmj5ky";
 	@Autowired
 	UserRepository users;
 	
@@ -36,10 +36,12 @@ public class GeoLocalizationInquiry implements IntentExecutor {
 		}
 		else if(resultUser.getGeoFencing().equals("Europe")){
 			if (ApiAIResponse.getResult().getParameters().get("ZoneN") == "World"){
-				return "La tua carta non é abilitata ai pagamenti in tutto il mondo."; 
+                return "La tua carta non è abilitata ai pagamenti in tutto il mondo. \nVuoi attivarla in tutto il mondo?";
 			}
 			else {
-				return "Puoi pagare con la tua carta solo in " + (ApiAIResponse.getResult().getParameters().get("ZoneN").equals("Europe") ? "Europa" : "Italia" ) + ".";
+				return "Puoi pagare con la tua carta solo in " +
+                        (ApiAIResponse.getResult().getParameters().get("ZoneN").equals("Europe") ? "Europa" : "Italia" ) + "."
+                        + " \nVuoi attivarla in tutto il mondo?";
 			}
 		}
 		else {

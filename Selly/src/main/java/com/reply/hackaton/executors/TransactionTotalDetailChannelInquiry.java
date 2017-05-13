@@ -15,12 +15,12 @@ public class TransactionTotalDetailChannelInquiry implements IntentExecutor{
             return apiAIResponse.getResult().getSpeech();
         }
 
-        return getTotalAmountForCardInPeriod() + "\n\n" + showAmazonOffer();
+        return "Hai fatto pagamenti in e-commerce per un totale di 448,63 €" + "\n\n" + showAmazonOffer();
     }
 
-    private String getTotalAmountForCardInPeriod() {
-        return "Hai fatto pagamenti in e-commerce per un totale di " + Utils.getRandomCardBalance() + " euro.";
-    }
+//    private String getTotalAmountForCardInPeriod() {
+//        return "Hai fatto pagamenti in e-commerce per un totale di " + Utils.getRandomCardBalance() + " euro.";
+//    }
 
     private String showAmazonOffer(){
         return "Ho visto che hai accumulato 22000 punti fedeltà MySi. Cosa ne pensi di richiedere gratuitamente un buono Amazon da 50 €? ";

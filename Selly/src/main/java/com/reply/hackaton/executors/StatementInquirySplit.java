@@ -65,11 +65,12 @@ public class StatementInquirySplit implements IntentExecutor {
 		StringBuilder sb = new StringBuilder();
 		sb.append(System.getProperty("line.separator"));
 		sb.append("Queste sono le prime 5 categorie di spesa:");
+		sb.append(System.getProperty("line.separator"));
 		int count = 1;
 		for (Entry<Double, String> entry : orderedMap.entrySet()) {
 			if(count==6) break;
-			sb.append(count + ")  " + entry.getKey() + " € in " + new DecimalFormat("#.##").format(
-					entry.getValue()));
+			sb.append(count + ")  " + entry.getKey() + " € in " +
+					entry.getValue());
 			sb.append(System.getProperty("line.separator"));
 			count++;
 		}

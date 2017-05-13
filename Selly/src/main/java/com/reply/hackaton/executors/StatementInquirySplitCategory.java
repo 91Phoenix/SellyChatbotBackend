@@ -66,7 +66,8 @@ public class StatementInquirySplitCategory implements IntentExecutor {
 			orderedMap.put((Double) e.getValue(), (String) e.getKey());
 		}
 		StringBuilder sb = new StringBuilder();
-		sb.append("Questi I primi 5 ristornati in cui hai speso:");
+		sb.append("Questi i primi 5 ristornati in cui hai speso:");
+		sb.append(System.getProperty("line.separator"));
 		int count = 1;
 		StringTokenizer tkn=null; 
 		for (Entry<Double, String> entry : orderedMap.entrySet()) {

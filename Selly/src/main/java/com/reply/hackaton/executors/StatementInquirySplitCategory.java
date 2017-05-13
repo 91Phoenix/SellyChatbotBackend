@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
 import java.util.TreeMap;
 import java.util.Map.Entry;
 
+import com.reply.hackaton.model.AndroidClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +31,7 @@ public class StatementInquirySplitCategory implements IntentExecutor {
 	TransactionHistoryRepository transactions;
 
 	@Override
-	public String execute(Response ApiAIResponse) {
+	public String execute(Response ApiAIResponse, AndroidClientResponse androidClientResponse) {
 		if (ApiAIResponse.getResult().isActionIncomplete()) {
 			return ApiAIResponse.getResult().getFulfillment().getSpeech();
 		}

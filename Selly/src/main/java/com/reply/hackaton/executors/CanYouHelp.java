@@ -1,5 +1,6 @@
 package com.reply.hackaton.executors;
 
+import com.reply.hackaton.model.AndroidClientResponse;
 import org.springframework.stereotype.Service;
 
 import com.reply.hackaton.model.IntentExecutor;
@@ -9,7 +10,7 @@ import com.reply.hackaton.model.Response;
 public class CanYouHelp implements IntentExecutor {
 
 	@Override
-	public String execute(Response apiAIResponse) {
+	public String execute(Response apiAIResponse, AndroidClientResponse androidClientResponse) {
 		return apiAIResponse.getResult().getSpeech();
 	}
 

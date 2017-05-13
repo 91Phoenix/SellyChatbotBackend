@@ -1,5 +1,6 @@
 package com.reply.hackaton.executors;
 
+import java.text.DecimalFormat;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,7 +66,9 @@ public class StatementInquirySplit implements IntentExecutor {
 		sb.append("Queste sono le prime 5 categorie di spesa:");
 		int count = 1;
 		for (Entry<Double, String> entry : orderedMap.entrySet()) {
-			sb.append(count + ")  " + entry.getKey() + " € in " + entry.getValue());
+			if(count==6) break;
+			sb.append(count + ")  " + entry.getKey() + " € in " + new DecimalFormat("#.##").format(
+					entry.getValue()));
 			sb.append(System.getProperty("line.separator"));
 			count++;
 		}

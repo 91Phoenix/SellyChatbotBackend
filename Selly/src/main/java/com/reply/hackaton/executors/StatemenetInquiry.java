@@ -1,5 +1,6 @@
 package com.reply.hackaton.executors;
 
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -57,7 +58,8 @@ public class StatemenetInquiry implements IntentExecutor {
 		for (TransactionHistory tr : resultTransaction) {
 			totalExpense += tr.getAmount();
 		}
-		sb.append("L’ultimo estratto conto che ti è stato addebitato di " + totalExpense + " € è relativo" + ""
+		sb.append("L’ultimo estratto conto che ti è stato addebitato di " + new DecimalFormat("#.##").format(
+				totalExpense) + " € è relativo" + ""
 				+ " alle spese che hai sostenuto dal 1° " + month + " al 31 " + month
 				+ ". Hai bisogno di maggiori dettagli sulle tue spese?");
 

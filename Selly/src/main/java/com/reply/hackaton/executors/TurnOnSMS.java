@@ -1,5 +1,6 @@
 package com.reply.hackaton.executors;
 
+import com.reply.hackaton.model.AndroidClientResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class TurnOnSMS implements IntentExecutor {
 	private UserRepository userRepository;
 
 	@Override
-	public String execute(Response apiAIResponse) {
+	public String execute(Response apiAIResponse, AndroidClientResponse androidClientResponse) {
 		// TODO Auto-generated method stub
 		return null;
 	}

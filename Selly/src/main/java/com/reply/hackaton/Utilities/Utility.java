@@ -1,6 +1,5 @@
 package com.reply.hackaton.Utilities;
 
-import java.time.Month;
 import java.util.HashMap;
 
 import org.apache.log4j.Logger;
@@ -38,35 +37,68 @@ public class Utility {
 	}
 
 	public static String transformItalianInEnglishMonths(String date) {
-		
-		switch (date.toLowerCase()){
-			case"gennaio":
-				return "january";
-			case"febbraio":
-				return "february";
-			case"marzo":
-				return "march";
-			case"aprile":
-				return "april";
-			case "maggio":
-				return "may";
-			case "giugno":
-				return "june";
-			case"luglio":
-				return "july";
-			case"agosto":
-				return "august";
-			case "settembre":
-				return "september";
-			case"ottobre":
-				return "october";
-			case"novembre":
-				return "november";
-			case"dicembre":
-				return "december";
-			default:
-				return "";
+
+		switch (date.toLowerCase()) {
+		case "gennaio":
+			return "january";
+		case "febbraio":
+			return "february";
+		case "marzo":
+			return "march";
+		case "aprile":
+			return "april";
+		case "maggio":
+			return "may";
+		case "giugno":
+			return "june";
+		case "luglio":
+			return "july";
+		case "agosto":
+			return "august";
+		case "settembre":
+			return "september";
+		case "ottobre":
+			return "october";
+		case "novembre":
+			return "november";
+		case "dicembre":
+			return "december";
+		default:
+			return "";
 		}
-		
+
+	}
+
+	public static String transformEnglishToItalianMonths(String date) {
+
+		switch (date.toLowerCase()) {
+		case "january":
+			return "gennaio";
+		case "february":
+			return "febbraio";
+		case "march":
+			return "marzo";
+		case "april":
+			return "aprile";
+		case "may":
+			return "maggio";
+		case "june":
+			return "giugno";
+		case "july":
+			return "luglio";
+		case "august":
+			return "agosto";
+		case "september":
+			return "settembre";
+		case "october":
+			return "ottobre";
+		case "november":
+			return "novembre";
+		case "december":
+			return "dicembre";
+		default:
+			return "";
+		}
+
 	}
 }

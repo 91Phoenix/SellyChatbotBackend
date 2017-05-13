@@ -1,9 +1,12 @@
 package com.reply.hackaton.executors;
 
+import java.text.DecimalFormat;
+import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.reply.hackaton.model.AndroidClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +21,13 @@ public class StatemenetInquiry implements IntentExecutor {
 
 	private static final String CARD = "Card";
 	private static final String MONTH = "Month";
+	private static final String MONTH_NOW = "Month_now";
 
 	@Autowired
 	TransactionHistoryRepository transactions;
 
 	@Override
-	public String execute(Response ApiAIResponse) {
+	public String execute(Response ApiAIResponse, AndroidClientResponse androidClientResponse) {
 		if (ApiAIResponse.getResult().isActionIncomplete()) {
 			return ApiAIResponse.getResult().getFulfillment().getSpeech();
 		}
@@ -33,13 +37,20 @@ public class StatemenetInquiry implements IntentExecutor {
 			card = "525500******9045";
 		}
 		// allo stato atuale non filtriamo veramente per carta
-		String month = ApiAIResponse.getResult().getParameters().get(MONTH);
-		Month javaMonth = getMonth(month);
-
+		Month javaMonth = null;
+		String month=null;
+		if (!ApiAIResponse.getResult().getParameters().get(MONTH_NOW).equals("") &&  ApiAIResponse.getResult().getParameters().get(MONTH_NOW) != null) {
+			javaMonth = Month.of(LocalDate.now().getMonth().getValue()-1);
+			month= Utility.transformEnglishToItalianMonths(javaMonth.name());
+		}else{
+			 month = ApiAIResponse.getResult().getParameters().get(MONTH);
+			javaMonth = getMonth(month);
+		}
+		
 		Iterable<TransactionHistory> iterable = transactions.findAll();
 		List<TransactionHistory> resultTransaction = new ArrayList<TransactionHistory>();
 		for (TransactionHistory th : iterable) {
-			if (th.getDate().getMonth().equals(javaMonth))
+			if (th.getDate().getMonth().equals(javaMonth) && th.getDate().getYear()==2017)
 				resultTransaction.add(th);
 		}
 		StringBuilder sb = new StringBuilder();
@@ -48,9 +59,15 @@ public class StatemenetInquiry implements IntentExecutor {
 		for (TransactionHistory tr : resultTransaction) {
 			totalExpense += tr.getAmount();
 		}
-		sb.append("L’ultimo estratto conto che ti è stato addebitato di " + totalExpense + " € è relativo" + ""
-				+ " alle spese che hai sostenuto dal 1° " + month + " al 31 " + month
-				+ ". Hai bisogno di maggiori dettagli sulle tue spese?");
+
+		if (month != null){
+			month = month.toLowerCase();
+		}
+
+		sb.append("L’ultimo estratto conto che ti è stato addebitato di " + new DecimalFormat("#.##").format(
+				totalExpense) + " € è relativo" + ""
+				+ " alle spese che hai sostenuto nel mese di " + month
+				+ ". Fammi sapere se ti occorrono maggiori dettagli");
 
 		return sb.toString();
 	}

@@ -1,6 +1,6 @@
 package com.reply.hackaton.executors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.reply.hackaton.model.AndroidClientResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -30,7 +30,7 @@ public class TransactionTotalDetailChannelInquiry implements IntentExecutor{
 //    }
 
     private String showAmazonOffer(){
-        return "Ho visto che hai accumulato 22000 punti fedeltà MySi. Cosa ne pensi di richiedere gratuitamente un buono Amazon da 50 €? ";
+        return "Ho visto che hai accumulato 22000 punti fedeltà IoSi. Cosa ne pensi di richiedere gratuitamente un buono Amazon da 50 €? ";
     }
 
 

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
 
+import com.reply.hackaton.model.AndroidClientResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +29,7 @@ public class StatementInquirySplit implements IntentExecutor {
 	TransactionHistoryRepository transactions;
 
 	@Override
-	public String execute(Response ApiAIResponse) {
+	public String execute(Response ApiAIResponse, AndroidClientResponse androidClientResponse) {
 
 		String card = ApiAIResponse.getResult().getParameters().get(CARD);
 		if (card != null && card.equalsIgnoreCase("Allianz")) {

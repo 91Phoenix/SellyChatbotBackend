@@ -49,7 +49,7 @@ public class ClientRequestManagerService {
 		String action = apiAiResponse.getResult().getAction();
 		String intentName = null != action ? action : StringUtils.EMPTY;
 		//Invokes the proper java function in order to implement the business logic
-		response.setResponseText(intentExecutorFactory.getIntentExecutor(intentName).execute(apiAiResponse));
+		response.setResponseText(intentExecutorFactory.getIntentExecutor(intentName).execute(apiAiResponse, response));
 		return response;
 	}
 

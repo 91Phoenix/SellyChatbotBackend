@@ -1,5 +1,6 @@
 package com.reply.hackaton.executors;
 
+import com.reply.hackaton.model.AndroidClientResponse;
 import com.reply.hackaton.model.IntentExecutor;
 import com.reply.hackaton.model.Response;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service("forward")
 public class RespondeWithoutProcessing implements IntentExecutor {
     @Override
-    public String execute(Response apiAIResponse) {
+    public String execute(Response apiAIResponse, AndroidClientResponse androidClientResponse) {
         return apiAIResponse.getResult().getSpeech();
     }
 }

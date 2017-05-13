@@ -1,26 +1,21 @@
 package com.reply.hackaton.executors;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.reply.hackaton.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.reply.hackaton.model.IntentExecutor;
-import com.reply.hackaton.model.Response;
-import com.reply.hackaton.model.TransactionHistory;
-import com.reply.hackaton.model.User;
-import com.reply.hackaton.repository.TransactionHistoryRepository;
 import com.reply.hackaton.repository.UserRepository;
 
 @Service("GeoLocalization_Inquiry")
 public class GeoLocalizationInquiry implements IntentExecutor {
 
+	private static final String TRAVEL_INSURANCE = "travel_insurance";
+	private static final String TRAVEL_INSURANCE_WEB_SITE = "https://www.travelexinsurance.com";
 	@Autowired
 	UserRepository users;
 	
 	@Override
-	public String execute(Response ApiAIResponse) {
+	public String execute(Response ApiAIResponse, AndroidClientResponse androidClientResponse) {
 		if (ApiAIResponse.getResult().isActionIncomplete())
 			return ApiAIResponse.getResult().getSpeech();
 		Iterable<User> iterable = users.findAll();
@@ -32,6 +27,9 @@ public class GeoLocalizationInquiry implements IntentExecutor {
 			}
 		}
 		assert(resultUser != null);
+
+		androidClientResponse.setResponseImageLink(TRAVEL_INSURANCE_WEB_SITE);
+		androidClientResponse.setResponseImageName(TRAVEL_INSURANCE);
 		
 		if(resultUser.getGeoFencing().equals("World")){
 			return "Puoi pagare con la tua carta in tutto il mondo.";

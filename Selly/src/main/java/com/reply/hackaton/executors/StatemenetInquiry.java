@@ -59,10 +59,15 @@ public class StatemenetInquiry implements IntentExecutor {
 		for (TransactionHistory tr : resultTransaction) {
 			totalExpense += tr.getAmount();
 		}
+
+		if (month != null){
+			month = month.toLowerCase();
+		}
+
 		sb.append("L’ultimo estratto conto che ti è stato addebitato di " + new DecimalFormat("#.##").format(
 				totalExpense) + " € è relativo" + ""
-				+ " alle spese che hai sostenuto dal 1° " + month + " al 31 " + month
-				+ ". Hai bisogno di maggiori dettagli sulle tue spese?");
+				+ " alle spese che hai sostenuto nel mese di " + month
+				+ ". Fammi sapere se ti occorrono maggiori dettagli");
 
 		return sb.toString();
 	}

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service("TransactionTotal_Detail_Channel_Inquiry")
 public class TransactionTotalDetailChannelInquiry implements IntentExecutor{
     private static final String AMAZON = "amazon";
-    private static final String AMAZON_WEB_SITE_URL = "https://www.amazon.it";
+    private static final String AMAZON_WEB_SITE_URL = "CODICE COUPON: 4VBW-NV5GQ8-XPNZ ";
 
     @Override
     public String execute(Response apiAIResponse, AndroidClientResponse androidClientResponse) {

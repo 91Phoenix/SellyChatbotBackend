@@ -66,7 +66,7 @@ public class StatementInquirySplitCategory implements IntentExecutor {
 			orderedMap.put((Double) e.getValue(), (String) e.getKey());
 		}
 		StringBuilder sb = new StringBuilder();
-		sb.append("Questi i primi 5 ristornati in cui hai speso:");
+		sb.append("Questi sono i primi 5 ristoranti in cui hai speso di più:");
 		sb.append(System.getProperty("line.separator"));
 		int count = 1;
 		StringTokenizer tkn=null; 
@@ -78,7 +78,8 @@ public class StatementInquirySplitCategory implements IntentExecutor {
 		count++;
 		
 		}
-		sb.append("Per altri dettagli posso mandarti l’estratto conto ecco il link all’estratto conto URL (estratto conto mese)");
+		sb.append(System.getProperty("line.separator"));
+		sb.append("Per altri dettagli, ecco il link dell’estratto conto: tiny.cc/tbe5ky;");
 		sb.append(System.getProperty("line.separator"));
 		sb.append("Posso fare altro per te?");
 

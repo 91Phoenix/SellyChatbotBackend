@@ -16,6 +16,6 @@ public class TransactionTotalInquiry implements IntentExecutor {
             return apiAIResponse.getResult().getSpeech();
         }
 
-        return "Hai speso 782,10 €";
+        return "Hai speso 232,10 €";
     }
 }

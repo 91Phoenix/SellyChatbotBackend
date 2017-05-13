@@ -22,7 +22,7 @@ public class TransactionTotalDetailChannelInquiry implements IntentExecutor{
         androidClientResponse.setResponseImageLink(AMAZON_WEB_SITE_URL);
         androidClientResponse.setResponseImageName(AMAZON);
 
-        return "Hai fatto pagamenti in e-commerce per un totale di 448,63 €" + "\n\n" + showAmazonOffer();
+        return "Hai fatto pagamenti in e-commerce per un totale di 110,63 €" + "\n\n" + showAmazonOffer();
     }
 
 //    private String getTotalAmountForCardInPeriod() {

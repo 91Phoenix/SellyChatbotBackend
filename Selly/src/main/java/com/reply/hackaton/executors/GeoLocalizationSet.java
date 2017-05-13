@@ -1,6 +1,8 @@
 package com.reply.hackaton.executors;
 
 import com.reply.hackaton.model.AndroidClientResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +19,7 @@ public class GeoLocalizationSet implements IntentExecutor {
 
 	@Override
 	@Transactional
-	public String execute(Response ApiAIResponse) {
+	public String execute(Response ApiAIResponse, AndroidClientResponse androidClientResponse) {
 		if (!ApiAIResponse.getResult().isActionIncomplete())
 			return ApiAIResponse.getResult().getSpeech();
 
@@ -39,5 +41,4 @@ public class GeoLocalizationSet implements IntentExecutor {
 			return "Ok, I will not change the geo-fencing settings of your card.";
 		}
 	}
-
 }
